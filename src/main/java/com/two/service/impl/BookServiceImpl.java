@@ -29,12 +29,12 @@ public class BookServiceImpl extends ServiceImpl<BookDao, Book> implements IBook
         return bookDao.deleteById(id)>0;
     }
 
-    @Override
+   /* @Override
     public IPage<Book> getPage(int currentPage,int pageSize) {
         IPage<Book> page=new Page<Book>(currentPage,pageSize);
         bookDao.selectPage(page,null);
         return page;
-    }
+    }*/
 
 //    @Override
     /*public IPage<Book> getPage(int currentPage, int pageSize, Book book) {
