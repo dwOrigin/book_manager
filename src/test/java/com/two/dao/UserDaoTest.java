@@ -2,21 +2,25 @@ package com.two.dao;
 
 import com.two.domain.User;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class UserDaoTest {
     @Autowired
-    private UserDao userDao;
+    private UserDao UserDao;
     @Test
     public void Testsave(){
         User user=new User();
-        user.setPassWord("1");
+        user.setPassword("1");
         user.setState(0);
         user.setPhoneNumber("2");
-        userDao.insert(user);
+        user.setOrAdmin(0);
+        user.setName("瓜皮");
+        //UserDao.insert(user);
+        UserDao.deleteById(1);
     }
 
 }
