@@ -13,9 +13,12 @@ public class UserDaoTest {
     @Test
     public void Testsave(){
         User user=new User();
-        user.setPassWord("1");
+        user.setName("小伙子");
+        user.setPassword("1222");
+//        user.setPassWord("1");
         user.setState(0);
-        user.setPhoneNumber("2");
+        user.setPhoneNumber("21458653113");
+        user.setOrAdmin(0);
         userDao.insert(user);
     }
 
