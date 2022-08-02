@@ -15,6 +15,6 @@ mybatis-plus:
     db-config:
       id-type: auto #      Could not set property 'id' of 'class com.itheima.domain.Book' with value '1545320355021840386' Cause: java.lang.IllegalArgumentException: argument type mismatch
   #      由于系统内部没有调用到自增的部分，导致id设置的时候会容易出现错误，因此要把id-type设置为auto自增部分
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #在执行的过程中考虑到不能直观看到对应的执行过程，因此添加一个可以看到执行过程的日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #在执行的过程中考虑到不能直观看到对应的执行过程，因此添加一个可以看到执行过程的日志
 
