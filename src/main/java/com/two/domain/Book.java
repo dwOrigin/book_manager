@@ -14,7 +14,7 @@ public class Book {
     private String name;
     private String press;
     private String author;
-    private Integer totalNumber;
-    private Integer bookID;
+    private Integer total_number;
+    private Integer book_id;
 
 }

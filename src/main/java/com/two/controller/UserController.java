@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     //查看所有数据
     @Autowired
     private IUserService userService;
    @GetMapping
-    public List<User>getAll(){
+    public List<User> getAll(){
        System.out.println("show all message");
        return userService.list();//初始化内容
    }
