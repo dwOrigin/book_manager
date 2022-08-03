@@ -1,6 +1,6 @@
 package com.two.controller;
 
-import com.two.domain.Book;
+import com.two.entity.Book;
 import com.two.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
