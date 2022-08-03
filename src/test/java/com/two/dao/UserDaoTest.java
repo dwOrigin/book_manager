@@ -1,6 +1,7 @@
 package com.two.dao;
 
-import com.two.domain.User;
+//import com.two.domain.User;
+import com.two.entity.User;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class UserDaoTest {
         user.setName("瓜皮");
         //UserDao.insert(user);
         UserDao.deleteById(1);
+    }
+    @Test
+    public void TestQueryUser(){
+        UserDao.getByUserId(2);
     }
 
 }
