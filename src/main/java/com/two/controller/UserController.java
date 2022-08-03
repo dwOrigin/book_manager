@@ -1,6 +1,7 @@
 package com.two.controller;
 
-import com.two.domain.User;
+import com.two.common.Result;
+import com.two.entity.User;
 import com.two.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,6 @@ public class UserController {
         return userService.getById(id);
     }
 
-
-
+    @PostMapping("/user/change")
+    public Result change(@RequestBody User user){return null;}
 }
