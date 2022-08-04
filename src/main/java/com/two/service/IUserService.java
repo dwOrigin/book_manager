@@ -5,6 +5,7 @@ import com.two.common.Result;
 import com.two.entity.User;
 
 public interface IUserService extends IService<User> {
-    public Result changeUser(User user);
+
+    Result changeUser(User user);
 
 }

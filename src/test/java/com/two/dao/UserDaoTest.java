@@ -1,6 +1,6 @@
 package com.two.dao;
 
-import com.two.domain.User;
+import com.two.entity.User;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;

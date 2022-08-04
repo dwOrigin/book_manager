@@ -4,18 +4,20 @@ import com.two.common.Result;
 import com.two.entity.User;
 import com.two.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     //查看所有数据
     @Autowired
     private IUserService userService;
-   @GetMapping
+    @GetMapping
     public List<User> getAll(){
        System.out.println("show all message");
        return userService.list();//初始化内容
@@ -40,6 +42,6 @@ public class UserController {
         return userService.getById(id);
     }
 
-    @PostMapping("/user/change")
-    public Result change(@RequestBody User user){return null;}
+    @PostMapping("/change")
+    public Result change(@RequestBody User user){return userService.changeUser(user);}
 }
