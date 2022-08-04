@@ -18,6 +18,7 @@ import java.io.Serializable;
  * @author youbai
  * @since 2022-08-02
  */
+
 @Data
   @ApiModel(value = "User对象", description = "")
 public class User implements Serializable {

@@ -3,7 +3,7 @@ server:
 #  配置数据源
 spring:
   datasource:
-    druid:
+#    druid:把它删除
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://120.46.178.233:3306/preface?serverTimezone=UTC
 #      url: jdbc:mysql://120.46.178.233:3306/preface?serverTimezone=UTC
