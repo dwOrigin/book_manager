@@ -1,5 +1,6 @@
 package com.two.controller;
 
+import com.two.common.Result;
 import com.two.entity.Book;
 import com.two.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,20 @@ public class BookController {
         return bookService.getById(id);
     }
 
-
+    /*
+     *功能6
+     */
+    @PostMapping("/add")
+    public Result add(@PathVariable Book book){return bookService.addBook(book);}
+    /*
+     *功能7
+     */
+    @PostMapping("/delete")
+    public Result delete(@PathVariable Book book){return bookService.deleteBook(book);}
+    /*
+     *功能8
+     */
+    @PostMapping("/change")
+    public Result change(@PathVariable Book book){return bookService.changeBook(book);};
 
 }

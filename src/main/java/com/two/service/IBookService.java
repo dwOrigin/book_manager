@@ -1,11 +1,14 @@
 package com.two.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.two.common.Result;
 import com.two.entity.Book;
 
 public interface IBookService extends IService<Book> {
-//图书增
-//    图书改
-//    图书查
-//    图书删
+    Result addBook(Book book);
+
+    Result changeBook(Book book);
+
+    Result deleteBook(Book book);
+
 }

@@ -42,7 +42,5 @@ public class Book implements Serializable {
       @ApiModelProperty("书籍总数（大于所有图书号）")
       private Integer totalNumber;
 
-    private Integer bookId;
-
 
 }
