@@ -17,8 +17,8 @@ public interface IUserService extends IService<User> {
      List<Book> queryAllBook(Integer id);
      void state(User user);
 //     借书
- void borrowBook( Integer book_id,Integer user_id);
+ Result borrowBook( Integer book_id,Integer user_id);
 // 还书
- void returnBook(Integer book_id, Integer user_id);
+Result returnBook(Integer book_id, Integer user_id);
 
 }

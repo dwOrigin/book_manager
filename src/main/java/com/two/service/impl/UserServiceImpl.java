@@ -85,11 +85,17 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements IUser
     }
 //用户借书
     @Override
-    public void borrowBook( Integer book_id,Integer user_id) {
+    public Result borrowBook( Integer book_id,Integer user_id) {
        Records record=new Records();
        record.setBookId(book_id);
        record.setUserId(user_id);
-       recordsDao.insert(record);
+       Integer result=recordsDao.insert(record);
+//insert中为影响行数，如果是影响多行就为成功
+        if(result>=1){
+            return Result.success(Constants.CODE_200,"借书成功");}
+        else {
+        return Result.error(Constants.CODE_400,"借书失败");}
+
     }
 //    用户还书
 @Override
@@ -97,16 +103,19 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements IUser
     * 按条件封装删除 用map封装
     * 使用两个条件去封装，对应出一个确定的记录
     *   recordsDao.deleteById(book_id);该种方式存在删除多条的风险*/
-    public void returnBook(Integer book_id, Integer user_id){
+    public Result returnBook(Integer book_id, Integer user_id){
         Records records=new Records();
         records.setUserId(user_id);
         records.setBookId(book_id);
         HashMap<String,Object> map = new HashMap<>();
         map.put("book_id",records.getBookId());
         map.put("user_id",records.getUserId());
-        recordsDao.deleteByMap(map);
-
+        Integer result=recordsDao.deleteByMap(map);
+//deleteByMap，如果是影响多行就为成功
+    if(result>=1){
+        return Result.success(Constants.CODE_200,"借书成功");}
+    else {
+        return Result.error(Constants.CODE_400,"借书失败");}
     }
-
 
 }

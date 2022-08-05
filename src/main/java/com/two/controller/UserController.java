@@ -1,6 +1,7 @@
 package com.two.controller;
 
 import com.two.common.Result;
+import com.two.entity.Book;
 import com.two.entity.User;
 import com.two.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +45,20 @@ public class UserController {
 
     @PostMapping("/change")
     public Result change(@RequestBody User user){return userService.changeUser(user);}
+@GetMapping("/records/{id}")
+    public List<Book> records(@PathVariable Integer id){
+        return userService.queryAllBook(id);
+}
+//借书
+@GetMapping("/record/borrow/{user_id}/{book_id}")
+    public Result borrowBook(@PathVariable Integer user_id,@PathVariable Integer book_id){
+    return userService.borrowBook(book_id,user_id);
+
+}
+//还书
+    @GetMapping("/record/return/{user_id}/{book_id}")
+    public Result returnBook(@PathVariable Integer user_id,@PathVariable Integer book_id){
+return userService.returnBook(book_id,user_id);
+
+    }
 }
