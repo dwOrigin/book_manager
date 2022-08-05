@@ -6,7 +6,6 @@ import com.two.common.Constants;
 import com.two.common.Result;
 import com.two.dao.BookDao;
 
-import com.two.dao.RecordsDao;
 import com.two.entity.Book;
 import com.two.entity.Records;
 import com.two.service.IBookService;
@@ -15,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookServicelmp extends ServiceImpl<BookDao, Book> implements IBookService {
+public class BookServicelmpl extends ServiceImpl<BookDao, Book> implements IBookService {
     @Autowired
     private BookDao bookDao;
     @Autowired

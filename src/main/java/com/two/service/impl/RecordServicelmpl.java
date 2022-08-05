@@ -7,5 +7,5 @@ import com.two.service.RecordService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RecordServicelmp extends ServiceImpl<RecordsDao, Records> implements RecordService {
+public class RecordServicelmpl extends ServiceImpl<RecordsDao, Records> implements RecordService {
 }

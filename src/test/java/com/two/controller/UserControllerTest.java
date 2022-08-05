@@ -24,4 +24,15 @@ class UserControllerTest {
         user.setPhoneNumber("2");
         userService.changeUser(user);
     }
+    @Test
+    void queryBooks(){
+        userService.queryAllBook(1);
+    }
+    @Test
+    void borrowBookTest(){
+        userService.borrowBook(1,9);
+    }
+    void returnBookTest(){
+        userService.returnBook(1,9);
+    }
 }

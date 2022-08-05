@@ -4,23 +4,35 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.two.common.Constants;
 import com.two.common.Result;
+import com.two.dao.BookDao;
+import com.two.dao.RecordsDao;
 import com.two.dao.UserDao;
 import com.two.entity.Book;
 import com.two.entity.Records;
 import com.two.entity.User;
+import com.two.service.IBookService;
 import com.two.service.IUserService;
 import com.two.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserDao, User> implements IUserService {
     @Autowired
     UserDao userDao;
+
     @Autowired
+
+    BookDao bookDao;
+    @Autowired
+
+    RecordsDao recordsDao;
+    @Autowired
+
     RecordService recordService;
 
     @Override
@@ -35,11 +47,26 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements IUser
             return Result.success(Constants.CODE_200,"修改成功");
         }
     }
-
+//查询某个人所借的书籍
     @Override
-    public List<Book> queryAllBook(User user) {
+    public List<Book> queryAllBook(Integer id)throws NullPointerException {
         List<Book> allBooks = new ArrayList<Book>();
-        System.out.println(userDao.getByUserId(2));
+       List<Records>recordsList=userDao.getByUserId(id);
+       List<Integer>bookIds=new ArrayList<>();
+//     获得书籍的所有bookId信息
+       for (int i=0;i<recordsList.size();i++){
+           bookIds.add(recordsList.get(i).getBookId());
+       }
+
+       QueryWrapper<Book>bookQueryWrapper=new QueryWrapper<>();
+       for (int i=0;i<bookIds.size();i++) {
+           bookQueryWrapper.eq("id", bookIds.get(i));
+               List<Book> Books = bookDao.selectList(bookQueryWrapper);
+//           把对应的book记录传递到最终的函数值中去
+               for (int j = 0; i < Books.size(); j++)
+                   allBooks.add(Books.get(i));
+
+       }
         return allBooks;
     }
 
@@ -56,4 +83,30 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements IUser
             userDao.updateById(user);
         }
     }
+//用户借书
+    @Override
+    public void borrowBook( Integer book_id,Integer user_id) {
+       Records record=new Records();
+       record.setBookId(book_id);
+       record.setUserId(user_id);
+       recordsDao.insert(record);
+    }
+//    用户还书
+@Override
+    /*
+    * 按条件封装删除 用map封装
+    * 使用两个条件去封装，对应出一个确定的记录
+    *   recordsDao.deleteById(book_id);该种方式存在删除多条的风险*/
+    public void returnBook(Integer book_id, Integer user_id){
+        Records records=new Records();
+        records.setUserId(user_id);
+        records.setBookId(book_id);
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("book_id",records.getBookId());
+        map.put("user_id",records.getUserId());
+        recordsDao.deleteByMap(map);
+
+    }
+
+
 }
